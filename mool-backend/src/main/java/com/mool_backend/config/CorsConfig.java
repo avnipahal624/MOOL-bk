@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class CorsConfig {
 
-    @Value("${app.frontend-url:http://localhost:3001}")
+    @Value("${FRONTEND_URL:http://localhost:3001}")
     private String frontendUrl;
 
     @Bean
@@ -23,7 +23,13 @@ public class CorsConfig {
                         "http://127.0.0.1:*",
                         frontendUrl
                     )
-                    .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                    .allowedMethods(
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "OPTIONS"
+                    )
                     .allowedHeaders("*");
             }
         };
